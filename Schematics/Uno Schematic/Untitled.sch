@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Driver_LED:PCA9685BS U?
-U 1 1 61AC2446
-P 7700 5000
-F 0 "U?" H 7700 6181 50  0000 C CNN
-F 1 "PCA9685BS" H 7700 6090 50  0000 C CNN
-F 2 "Package_DFN_QFN:QFN-28-1EP_6x6mm_P0.65mm_EP4.25x4.25mm" H 7725 4025 50  0001 L CNN
-F 3 "http://www.nxp.com/documents/data_sheet/PCA9685.pdf" H 7300 5700 50  0001 C CNN
-	1    7700 5000
-	1    0    0    -1  
-$EndComp
-$Comp
 L MCU_Module:Arduino_UNO_R2 A?
 U 1 1 61AC8F54
 P 3000 2350
@@ -51,18 +40,111 @@ F 3 "~" H 3000 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3000 4000 3000 3700
-Wire Wire Line
 	3200 1350 3200 1200
+$Comp
+L power:Earth #PWR?
+U 1 1 61AE6891
+P 5950 3000
+F 0 "#PWR?" H 5950 2750 50  0001 C CNN
+F 1 "Earth" H 5950 2850 50  0001 C CNN
+F 2 "" H 5950 3000 50  0001 C CNN
+F 3 "~" H 5950 3000 50  0001 C CNN
+	1    5950 3000
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3200 1200 4900 1200
+	5950 2950 5950 3000
+Text Label 7800 3950 0    50   ~ 0
+motor
+Connection ~ 3000 3700
 Wire Wire Line
-	4900 1200 4900 1750
+	3000 3700 3000 3450
+Wire Wire Line
+	3000 4000 3000 3700
 $Comp
 L Device:R_Small R1
 U 1 1 61AD0FF0
+P 4050 1850
+F 0 "R1" H 4109 1896 50  0000 L CNN
+F 1 "3.3k" H 4109 1805 50  0000 L CNN
+F 2 "" H 4050 1850 50  0001 C CNN
+F 3 "~" H 4050 1850 50  0001 C CNN
+	1    4050 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 1200 4050 1750
+Wire Wire Line
+	4050 1950 4050 2350
+Connection ~ 4050 1200
+Wire Wire Line
+	4050 1200 4450 1200
+Wire Wire Line
+	3200 1200 4050 1200
+Wire Wire Line
+	3500 2350 4050 2350
+$Comp
+L Device:R_Small R2
+U 1 1 61AC7A16
+P 4450 1850
+F 0 "R2" H 4509 1896 50  0000 L CNN
+F 1 "3.3k" H 4509 1805 50  0000 L CNN
+F 2 "" H 4450 1850 50  0001 C CNN
+F 3 "~" H 4450 1850 50  0001 C CNN
+	1    4450 1850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 1200 4450 1750
+$Comp
+L Device:R_Variable FS2
+U 1 1 61AC9624
+P 4450 3000
+F 0 "FS2" H 4578 3046 50  0000 L CNN
+F 1 "Flex" H 4578 2955 50  0000 L CNN
+F 2 "" V 4380 3000 50  0001 C CNN
+F 3 "~" H 4450 3000 50  0001 C CNN
+	1    4450 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 1950 4450 2450
+Wire Wire Line
+	3500 2450 4450 2450
+Connection ~ 4450 2450
+$Comp
+L Device:R_Variable FS1
+U 1 1 61AD3804
+P 4050 3000
+F 0 "FS1" H 4178 3046 50  0000 L CNN
+F 1 "Flex" H 4178 2955 50  0000 L CNN
+F 2 "" V 3980 3000 50  0001 C CNN
+F 3 "~" H 4050 3000 50  0001 C CNN
+	1    4050 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 3700 4050 3700
+Wire Wire Line
+	4050 2350 4050 2850
+Connection ~ 4050 2350
+Wire Wire Line
+	4050 3150 4050 3700
+Connection ~ 4050 3700
+Wire Wire Line
+	4050 3700 4450 3700
+Wire Wire Line
+	4450 2450 4450 2850
+Wire Wire Line
+	4450 3150 4450 3700
+Connection ~ 4450 3700
+Wire Wire Line
+	4450 3700 4900 3700
+$Comp
+L Device:R_Small R3
+U 1 1 61AD281A
 P 4900 1850
-F 0 "R1" H 4959 1896 50  0000 L CNN
+F 0 "R3" H 4959 1896 50  0000 L CNN
 F 1 "3.3k" H 4959 1805 50  0000 L CNN
 F 2 "" H 4900 1850 50  0001 C CNN
 F 3 "~" H 4900 1850 50  0001 C CNN
@@ -70,85 +152,138 @@ F 3 "~" H 4900 1850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4900 3700 3000 3700
-Connection ~ 3000 3700
-Wire Wire Line
-	3000 3700 3000 3450
+	4900 1200 4900 1750
 $Comp
-L Device:R_Variable R?
-U 1 1 61AD3804
-P 4900 2800
-F 0 "R?" H 5028 2846 50  0000 L CNN
-F 1 "R_Variable" H 5028 2755 50  0000 L CNN
-F 2 "" V 4830 2800 50  0001 C CNN
-F 3 "~" H 4900 2800 50  0001 C CNN
-	1    4900 2800
+L Device:R_Variable FS3
+U 1 1 61AD2821
+P 4900 3000
+F 0 "FS3" H 5028 3046 50  0000 L CNN
+F 1 "Flex" H 5028 2955 50  0000 L CNN
+F 2 "" V 4830 3000 50  0001 C CNN
+F 3 "~" H 4900 3000 50  0001 C CNN
+	1    4900 3000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4900 2950 4900 3700
+	3950 2450 4450 2450
 Wire Wire Line
-	4900 1950 4900 2350
+	4900 3150 4900 3700
 Wire Wire Line
-	3500 2350 4900 2350
-Connection ~ 4900 2350
+	4900 1950 4900 2550
 Wire Wire Line
-	4900 2350 4900 2650
-$Comp
-L Regulator_Linear:uA7805 U?
-U 1 1 61AD98AF
-P 5950 3500
-F 0 "U?" H 5950 3742 50  0000 C CNN
-F 1 "uA7805" H 5950 3651 50  0000 C CNN
-F 2 "" H 5975 3350 50  0001 L CIN
-F 3 "http://www.ti.com/lit/ds/symlink/ua78.pdf" H 5950 3450 50  0001 C CNN
-	1    5950 3500
-	1    0    0    -1  
-$EndComp
+	3500 2550 4900 2550
+Connection ~ 4900 2550
 Wire Wire Line
-	7000 4400 3850 4400
+	4900 2550 4900 2850
 Wire Wire Line
-	3850 4400 3850 2750
-Wire Wire Line
-	3750 2850 3750 4300
-Wire Wire Line
-	3750 4300 7000 4300
-$Comp
-L power:Earth #PWR?
-U 1 1 61AE6891
-P 5950 3850
-F 0 "#PWR?" H 5950 3600 50  0001 C CNN
-F 1 "Earth" H 5950 3700 50  0001 C CNN
-F 2 "" H 5950 3850 50  0001 C CNN
-F 3 "~" H 5950 3850 50  0001 C CNN
-	1    5950 3850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5950 3800 5950 3850
-Wire Wire Line
-	6250 3500 7300 3500
-Wire Wire Line
-	7300 3500 7300 4000
-Wire Wire Line
-	7300 4000 7700 4000
+	5650 2450 5650 2650
 $Comp
 L power:+9V #PWR?
 U 1 1 61AE7E4A
-P 5400 3300
-F 0 "#PWR?" H 5400 3150 50  0001 C CNN
-F 1 "+9V" H 5415 3473 50  0000 C CNN
-F 2 "" H 5400 3300 50  0001 C CNN
-F 3 "" H 5400 3300 50  0001 C CNN
-	1    5400 3300
+P 5650 2450
+F 0 "#PWR?" H 5650 2300 50  0001 C CNN
+F 1 "+9V" H 5665 2623 50  0000 C CNN
+F 2 "" H 5650 2450 50  0001 C CNN
+F 3 "" H 5650 2450 50  0001 C CNN
+	1    5650 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:uA7805 U?
+U 1 1 61AD98AF
+P 5950 2650
+F 0 "U?" H 5950 2892 50  0000 C CNN
+F 1 "uA7805" H 5950 2801 50  0000 C CNN
+F 2 "" H 5975 2500 50  0001 L CIN
+F 3 "http://www.ti.com/lit/ds/symlink/ua78.pdf" H 5950 2600 50  0001 C CNN
+	1    5950 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R4
+U 1 1 61ADC3C0
+P 5400 1850
+F 0 "R4" H 5459 1896 50  0000 L CNN
+F 1 "3.3k" H 5459 1805 50  0000 L CNN
+F 2 "" H 5400 1850 50  0001 C CNN
+F 3 "~" H 5400 1850 50  0001 C CNN
+	1    5400 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Variable FS4
+U 1 1 61ADC3C7
+P 5400 3000
+F 0 "FS4" H 5528 3046 50  0000 L CNN
+F 1 "Flex" H 5528 2955 50  0000 L CNN
+F 2 "" V 5330 3000 50  0001 C CNN
+F 3 "~" H 5400 3000 50  0001 C CNN
+	1    5400 3000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5400 3300 5400 3500
+	4000 2550 4900 2550
 Wire Wire Line
-	5400 3500 5650 3500
+	5400 1950 5400 2650
 Wire Wire Line
-	8400 4300 9200 4300
-Text Label 9050 4250 0    50   ~ 0
+	5400 3150 5400 3700
+Wire Wire Line
+	5400 1200 5400 1750
+Wire Wire Line
+	5400 1200 4900 1200
+Connection ~ 4900 1200
+Connection ~ 4450 1200
+Wire Wire Line
+	4450 1200 4900 1200
+Wire Wire Line
+	5400 3700 4900 3700
+Connection ~ 4900 3700
+Wire Wire Line
+	3500 2650 5400 2650
+Connection ~ 5400 2650
+Wire Wire Line
+	5400 2650 5400 2850
+Wire Wire Line
+	3850 4050 3850 2750
+Wire Wire Line
+	3750 2850 3750 3950
+Text Label 7800 4050 0    50   ~ 0
 motor
+Text Label 7800 4150 0    50   ~ 0
+motor
+Text Label 7800 4250 0    50   ~ 0
+motor
+Text Label 7800 4350 0    50   ~ 0
+motor
+Wire Wire Line
+	6950 4350 7750 4350
+Wire Wire Line
+	6950 4250 7750 4250
+Wire Wire Line
+	6950 4150 7750 4150
+Wire Wire Line
+	6950 4050 7750 4050
+Wire Wire Line
+	6950 3950 7750 3950
+$Comp
+L Driver_LED:PCA9685BS U?
+U 1 1 61AC2446
+P 6250 4650
+F 0 "U?" H 6250 5831 50  0000 C CNN
+F 1 "PCA9685BS" H 6250 5740 50  0000 C CNN
+F 2 "Package_DFN_QFN:QFN-28-1EP_6x6mm_P0.65mm_EP4.25x4.25mm" H 6275 3675 50  0001 L CNN
+F 3 "http://www.nxp.com/documents/data_sheet/PCA9685.pdf" H 5850 5350 50  0001 C CNN
+	1    6250 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 4050 5550 4050
+Wire Wire Line
+	3750 3950 5550 3950
+Wire Wire Line
+	6250 2650 6650 2650
+Wire Wire Line
+	6650 2650 6650 3650
+Wire Wire Line
+	6650 3650 6250 3650
 $EndSCHEMATC
